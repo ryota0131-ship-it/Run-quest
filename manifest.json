@@ -1,0 +1,31 @@
+{
+  "name": "RUN QUEST",
+  "short_name": "RUN QUEST",
+  "description": "走ることが、冒険になる。未来の自分に会いに行くRPG",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#1B1F3B",
+  "theme_color": "#F2B33D",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
