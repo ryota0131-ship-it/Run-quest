@@ -1479,8 +1479,17 @@ export default function RunQuestMVP() {
         {overlay === "settings" && user && (
           <div className="fixed inset-0 z-30 flex items-end justify-center">
             <div className="absolute inset-0" style={{ backgroundColor: "rgba(20,30,50,0.55)" }} onClick={() => setOverlay("none")} />
-            <div className="relative w-full max-w-md rounded-t-3xl px-6 pt-6 pb-8 flex flex-col gap-5" style={{ backgroundColor: C.paper }}>
-              <div className="flex items-center justify-between">
+            <div
+              className="relative w-full max-w-md rounded-t-3xl px-6 pt-6 pb-8 flex flex-col gap-5"
+              style={{
+                backgroundColor: C.paper,
+                maxHeight: "85dvh",
+                overflowY: "auto",
+                WebkitOverflowScrolling: "touch",
+                overscrollBehavior: "contain",
+              }}
+            >
+              <div className="flex items-center justify-between" style={{ position: "sticky", top: 0, backgroundColor: C.paper, marginTop: -8, paddingTop: 8, zIndex: 1 }}>
                 <h3 className="rq-pixel text-lg" style={{ color: C.night }}>設定</h3>
                 <button onClick={() => setOverlay("none")}><X size={20} style={{ color: C.inkSoft }} /></button>
               </div>
@@ -1600,7 +1609,7 @@ export default function RunQuestMVP() {
         {overlay === "shop" && user && (
           <div className="fixed inset-0 z-30 flex items-end justify-center">
             <div className="absolute inset-0" style={{ backgroundColor: "rgba(20,30,50,0.55)" }} onClick={() => setOverlay("none")} />
-            <div className="relative w-full max-w-md rounded-t-3xl px-6 pt-6 pb-8 flex flex-col gap-4" style={{ backgroundColor: C.paper }}>
+            <div className="relative w-full max-w-md rounded-t-3xl px-6 pt-6 pb-8 flex flex-col gap-4" style={{ backgroundColor: C.paper, maxHeight: "85dvh", overflowY: "auto", WebkitOverflowScrolling: "touch", overscrollBehavior: "contain" }}>
               <div className="flex items-center justify-between">
                 <h3 className="rq-pixel text-lg" style={{ color: C.night }}>🛒 ショップ</h3>
                 <button onClick={() => setOverlay("none")}><X size={20} style={{ color: C.inkSoft }} /></button>
@@ -1641,7 +1650,7 @@ export default function RunQuestMVP() {
         {overlay === "bestiary" && user && (
           <div className="fixed inset-0 z-30 flex items-end justify-center">
             <div className="absolute inset-0" style={{ backgroundColor: "rgba(20,30,50,0.55)" }} onClick={() => setOverlay("none")} />
-            <div className="relative w-full max-w-md rounded-t-3xl px-6 pt-6 pb-8 flex flex-col gap-4" style={{ backgroundColor: C.paper, maxHeight: "80vh", overflowY: "auto" }}>
+            <div className="relative w-full max-w-md rounded-t-3xl px-6 pt-6 pb-8 flex flex-col gap-4" style={{ backgroundColor: C.paper, maxHeight: "80dvh", overflowY: "auto", WebkitOverflowScrolling: "touch", overscrollBehavior: "contain" }}>
               <div className="flex items-center justify-between">
                 <h3 className="rq-pixel text-lg" style={{ color: C.night }}>📖 モンスター図鑑</h3>
                 <button onClick={() => setOverlay("none")}><X size={20} style={{ color: C.inkSoft }} /></button>
@@ -1674,7 +1683,7 @@ export default function RunQuestMVP() {
         {overlay === "sheet" && (
           <div className="fixed inset-0 z-30 flex items-end justify-center">
             <div className="absolute inset-0" style={{ backgroundColor: "rgba(20,30,50,0.55)" }} onClick={() => setOverlay("none")} />
-            <div className="relative w-full max-w-md rounded-t-3xl px-6 pt-6 pb-8 flex flex-col gap-5" style={{ backgroundColor: C.paper }}>
+            <div className="relative w-full max-w-md rounded-t-3xl px-6 pt-6 pb-8 flex flex-col gap-5" style={{ backgroundColor: C.paper, maxHeight: "85dvh", overflowY: "auto", WebkitOverflowScrolling: "touch", overscrollBehavior: "contain" }}>
               <div className="flex items-center justify-between">
                 <h3 className="rq-pixel text-lg" style={{ color: C.night }}>今日の記録</h3>
                 <button onClick={() => setOverlay("none")}><X size={20} style={{ color: C.inkSoft }} /></button>
