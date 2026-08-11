@@ -1194,6 +1194,10 @@ export default function RunQuestMVP() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
+                  <button onClick={() => setOverlay("help")} aria-label="使い方"
+                    className="rq-pixel fs11 px-2 py-1 rounded-full" style={{ backgroundColor: "#ffffffaa", color: C.night }}>
+                    ❓
+                  </button>
                   <button onClick={() => setOverlay("bestiary")} aria-label="図鑑"
                     className="rq-pixel fs11 px-2 py-1 rounded-full" style={{ backgroundColor: "#ffffffaa", color: C.night }}>
                     📖
@@ -1646,7 +1650,103 @@ export default function RunQuestMVP() {
           </div>
         )}
 
-        {/* ---------- BESTIARY ---------- */}
+        {/* ---------- HELP ---------- */}
+        {overlay === "help" && (
+          <div className="fixed inset-0 z-30 flex items-end justify-center">
+            <div className="absolute inset-0" style={{ backgroundColor: "rgba(20,30,50,0.55)" }} onClick={() => setOverlay("none")} />
+            <div
+              className="relative w-full max-w-md rounded-t-3xl px-6 pt-6 pb-8 flex flex-col gap-4"
+              style={{ backgroundColor: C.paper, maxHeight: "85dvh", overflowY: "auto", WebkitOverflowScrolling: "touch", overscrollBehavior: "contain" }}
+            >
+              <div className="flex items-center justify-between" style={{ position: "sticky", top: 0, backgroundColor: C.paper, marginTop: -8, paddingTop: 8, zIndex: 1 }}>
+                <h3 className="rq-pixel text-lg" style={{ color: C.night }}>❓ 使い方</h3>
+                <button onClick={() => setOverlay("none")}><X size={20} style={{ color: C.inkSoft }} /></button>
+              </div>
+
+              <div className="flex flex-col gap-4">
+                <div>
+                  <div className="rq-display font-bold text-sm mb-1" style={{ color: C.night }}>🏃 基本の流れ</div>
+                  <p className="text-xs leading-relaxed" style={{ color: C.inkSoft }}>
+                    「⚔️ たたかいに行く」から、走った距離(と、あれば時間)を記録する。記録するとEXPがもらえてレベルが上がり、同時にモンスターにダメージが入る。
+                  </p>
+                </div>
+
+                <div>
+                  <div className="rq-display font-bold text-sm mb-1" style={{ color: C.night }}>⚔️ モンスターの種類</div>
+                  <div className="flex flex-col gap-2">
+                    <div className="rounded-xl px-3 py-2" style={cardStyle}>
+                      <div className="text-xs font-bold" style={{ color: C.ink }}>通常モンスター</div>
+                      <div className="fs11 mt-0.5" style={{ color: C.inkSoft }}>条件なし。距離を記録すればダメージが入る。3体倒すとボスが出現する。</div>
+                    </div>
+                    <div className="rounded-xl px-3 py-2" style={cardStyle}>
+                      <div className="text-xs font-bold" style={{ color: C.ink }}>修行モンスター</div>
+                      <div className="fs11 mt-0.5" style={{ color: C.inkSoft }}>自己ベストの距離×1.1、またはペース×0.9を超えないとダメージが入らない。ダメージが入ればボーナス倍率も付く。</div>
+                    </div>
+                    <div className="rounded-xl px-3 py-2" style={cardStyle}>
+                      <div className="text-xs font-bold" style={{ color: C.ink }}>ボスモンスター</div>
+                      <div className="fs11 mt-0.5" style={{ color: C.inkSoft }}>距離とペースの両方が一定水準を超えないと、ダメージが大きく減ってしまう。HPも高め。</div>
+                    </div>
+                    <div className="rounded-xl px-3 py-2" style={cardStyle}>
+                      <div className="text-xs font-bold" style={{ color: C.ink }}>🤝 クランモンスター</div>
+                      <div className="fs11 mt-0.5" style={{ color: C.inkSoft }}>「参戦する」をONにすると、他のモンスターと並行してダメージが入る。全プレイヤー共有のHPで、討伐すると次の世代が現れる。</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="rq-display font-bold text-sm mb-1" style={{ color: C.night }}>💪 ダメージの決まり方</div>
+                  <p className="text-xs leading-relaxed" style={{ color: C.inkSoft }}>
+                    基本ダメージ=距離×20。時間も入力してペースが速いと倍率アップ(6分/km以下で1.5倍など)。1回の距離が3km・5km以上だと固定ボーナスも付く。
+                  </p>
+                </div>
+
+                <div>
+                  <div className="rq-display font-bold text-sm mb-1" style={{ color: C.night }}>📋 メニュー(設定からON/OFF可能)</div>
+                  <p className="text-xs leading-relaxed" style={{ color: C.inkSoft }}>
+                    🔥ダイエット管理・🌱生活習慣管理・🧘ストレス発散管理の3種類。複数同時にONにできる。ダイエットは目標達成すると討伐と同じように祝われる。
+                  </p>
+                </div>
+
+                <div>
+                  <div className="rq-display font-bold text-sm mb-1" style={{ color: C.night }}>🪙 コインとショップ</div>
+                  <p className="text-xs leading-relaxed" style={{ color: C.inkSoft }}>
+                    モンスター討伐でコインがもらえる。ショップで⚡ダメージブースト(次の1回だけ+30%)や💊回復チケット(条件なしで回復ボーナス)と交換できる。
+                  </p>
+                </div>
+
+                <div>
+                  <div className="rq-display font-bold text-sm mb-1" style={{ color: C.night }}>🌙 サボった時・疲れている時</div>
+                  <p className="text-xs leading-relaxed" style={{ color: C.inkSoft }}>
+                    数日空いても、レベルが下がることはない。3〜4日で「停滞」、5〜7日で「久しぶりだね」の声かけ、8日以上で復帰ボーナスが付く。「しんどい」が2回続くと、次回は回復に専念できる。
+                  </p>
+                </div>
+
+                <div>
+                  <div className="rq-display font-bold text-sm mb-1" style={{ color: C.night }}>📱 ホーム画面に置く</div>
+                  <p className="text-xs leading-relaxed mb-2" style={{ color: C.inkSoft }}>
+                    アプリのようにアイコンから開けるようになります。
+                  </p>
+                  <div className="flex flex-col gap-2">
+                    <div className="rounded-xl px-3 py-2" style={cardStyle}>
+                      <div className="text-xs font-bold" style={{ color: C.ink }}>iPhone(Safari)</div>
+                      <div className="fs11 mt-0.5" style={{ color: C.inkSoft }}>
+                        下の共有ボタン(□に↑のアイコン)をタップ →「ホーム画面に追加」を選ぶ
+                      </div>
+                    </div>
+                    <div className="rounded-xl px-3 py-2" style={cardStyle}>
+                      <div className="text-xs font-bold" style={{ color: C.ink }}>Android(Chrome)</div>
+                      <div className="fs11 mt-0.5" style={{ color: C.inkSoft }}>
+                        右上の「⋮」メニューをタップ →「アプリをインストール」または「ホーム画面に追加」を選ぶ
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+
         {overlay === "bestiary" && user && (
           <div className="fixed inset-0 z-30 flex items-end justify-center">
             <div className="absolute inset-0" style={{ backgroundColor: "rgba(20,30,50,0.55)" }} onClick={() => setOverlay("none")} />
